@@ -6,20 +6,21 @@ public class CharacterStatus : MonoBehaviour
 {
     [SerializeField] int maxHealth;
     public int currentHealth;
-    public float moveSpeed;
-    public float spottingDistance;
-    public float attackRange;
     public int damage;
-    public string attackTargetTag;
 
-    private void OnEnable()
+    protected void OnEnable()
     {
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(CharacterStatus attacker, CharacterStatus defender)
+    public virtual void TakeDamage(CharacterStatus attacker, CharacterStatus defender)
     {
         defender.currentHealth = defender.currentHealth - attacker.damage;
+        Animator animator;
+        if (defender.TryGetComponent<Animator>(out animator))
+        {
+            animator.SetTrigger("hit");
+        }
 
         if (defender.currentHealth <= 0)
         {
@@ -27,10 +28,7 @@ public class CharacterStatus : MonoBehaviour
         }
     }
 
-    public virtual void Die()//死亡
+    protected virtual void Die()//死亡
     {
-        //EnemyManager.Instance.RemoveFromList(gameObject);
-        gameObject.SetActive(false);
-        //TODO:继承
     }
 }

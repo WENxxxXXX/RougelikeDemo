@@ -10,6 +10,7 @@ public class MiniMap : MonoBehaviour
     private void Awake()
     {
         rawImage = GetComponent<RawImage>();
+        rawImage.enabled = false;
     }
 
     private void Update()

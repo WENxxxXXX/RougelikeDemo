@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2978888702889080131}
   - component: {fileID: 2978888702889080130}
   - component: {fileID: 2978888702889080189}
-  - component: {fileID: 2978888702889080188}
-  - component: {fileID: 2978888702889080191}
   - component: {fileID: 5554503683138336034}
+  - component: {fileID: 2978888702889080188}
+  - component: {fileID: 5463571932631223083}
   m_Layer: 10
   m_Name: EnemyProjectile
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2978888702889080190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.85, y: 0.63, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -109,36 +109,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2978888702889080188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2978888702889080190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36b4cb1219843b747b384b9b6c3875a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyGameObject: 0
-  lifetime: 0.7
---- !u!114 &2978888702889080191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2978888702889080190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 254d599f36f9c43408c45b23a4f86886, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerVelocity: {x: 0, y: 0}
-  velocityFactor: 3
-  moveSpeed: 10
-  moveDirection: {x: 1, y: 0}
 --- !u!58 &5554503683138336034
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -155,3 +125,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &2978888702889080188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2978888702889080190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b4cb1219843b747b384b9b6c3875a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyGameObject: 0
+  lifetime: 0.7
+--- !u!114 &5463571932631223083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2978888702889080190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 145e246f4b7839b43a236e8fae67dd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerVelocity: {x: 0, y: 0}
+  velocityFactor: 3
+  moveSpeed: 10
+  moveDirection: {x: 1, y: 0}

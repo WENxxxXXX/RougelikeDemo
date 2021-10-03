@@ -8,9 +8,31 @@ public class AIController : MonoBehaviour
     [SerializeField] GameObject projectile;
     public FSMSystem fsm;
     protected string aiConfigFile;
-    protected GameObject prefab;
     [HideInInspector] public GameObject target;
-    public Vector3 initialPosition;
+    [SerializeField] float minAttackCD;
+    [SerializeField] float maxAttackCD;
+    [SerializeField] float minMoveCD;
+    [SerializeField] float maxMoveCD;
+    [HideInInspector] List<Vector2> moveDirectionList;
+    EnemyStatus enemyStatus;
+    Rigidbody2D rigid;
+
+    private void Awake()
+    {
+        enemyStatus = GetComponent<EnemyStatus>();
+        rigid = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnEnable()
+    {
+        moveDirectionList = new List<Vector2>();
+        moveDirectionList.Add(new Vector2(1, 0));
+        moveDirectionList.Add(new Vector2(-1, 0));
+        moveDirectionList.Add(new Vector2(0, 1));
+        moveDirectionList.Add(new Vector2(0, -1));
+        StartCoroutine(nameof(RandomMoveCoroutine));
+
+    }
 
     public virtual void Start()
     {
@@ -41,7 +63,17 @@ public class AIController : MonoBehaviour
                 firePoint.position, Quaternion.identity);
             temp.GetComponent<Projectile>().SetTarget(target);
             temp.GetComponent<Projectile>().SetOwner(GetComponent<CharacterStatus>());
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(Random.Range(minAttackCD, maxAttackCD));
+        }
+    }
+
+    IEnumerator RandomMoveCoroutine()
+    {
+        while (isActiveAndEnabled)
+        {
+            rigid.velocity = enemyStatus.moveSpeed * moveDirectionList
+                [Random.Range(0, moveDirectionList.Count)];
+            yield return new WaitForSeconds(Random.Range(minMoveCD, maxMoveCD));
         }
     }
 }

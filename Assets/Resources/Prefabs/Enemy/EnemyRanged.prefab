@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5187854754087846522}
   - component: {fileID: 5187854754087846525}
+  - component: {fileID: 810474031}
+  - component: {fileID: -3199755927355257192}
   - component: {fileID: 5187854754087846524}
   - component: {fileID: 5187854754087846523}
-  - component: {fileID: 5187854754087846520}
+  - component: {fileID: -7559264949481686318}
   m_Layer: 7
   m_Name: EnemyRanged
   m_TagString: Enemy
@@ -28,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5187854754087846527}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: -3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 5187854754156238663}
@@ -88,6 +90,46 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &810474031
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5187854754087846527}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7069d6a0507026243a2fed915324ab9c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &-3199755927355257192
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5187854754087846527}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!70 &5187854754087846524
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -120,8 +162,11 @@ MonoBehaviour:
   projectile: {fileID: 2978888702889080190, guid: 5afd10558b8004b4b8f894923b206f95,
     type: 3}
   target: {fileID: 0}
-  initialPosition: {x: 0, y: 0, z: 0}
---- !u!114 &5187854754087846520
+  minAttackCD: 1
+  maxAttackCD: 2
+  minMoveCD: 0.4
+  maxMoveCD: 0.8
+--- !u!114 &-7559264949481686318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,16 +175,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 5187854754087846527}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7c959b8e703d20429edacccf58f72b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d418375b309a94499f48189843064ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 3
   currentHealth: 0
-  moveSpeed: 4
-  spottingDistance: 8
-  attackRange: 8
   damage: 1
+  moveSpeed: 4
+  spottingDistance: 5
+  attackRange: 5
   attackTargetTag: Player
+  fadeTime: 0.3
 --- !u!1 &5187854754156238662
 GameObject:
   m_ObjectHideFlags: 0

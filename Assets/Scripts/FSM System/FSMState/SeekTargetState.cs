@@ -21,12 +21,13 @@ public class SeekTargetState : FSMState
             fSMSystem.PerformTransition(Transition.NoHealth);
         }
 
-        var colliders = Physics2D.OverlapCircleAll(npc.transform.position, npc.GetComponent<CharacterStatus>().spottingDistance);
+        var colliders = Physics2D.OverlapCircleAll(npc.transform.position, npc.GetComponent<EnemyStatus
+        >().spottingDistance);
         if (colliders.Length != 0)
         {
             foreach (var collider in colliders)
             {
-                if (collider.CompareTag(npc.GetComponent<CharacterStatus>().attackTargetTag) && collider.gameObject.activeSelf)
+                if (collider.CompareTag(npc.GetComponent<EnemyStatus>().attackTargetTag) && collider.gameObject.activeSelf)
                     {
                         npc.GetComponent<AIController>().target = collider.gameObject;
                         fSMSystem.PerformTransition(Transition.FindTarget);

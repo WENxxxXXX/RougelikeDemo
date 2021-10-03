@@ -15,7 +15,7 @@ public class MoveToTargetState : FSMState
         {
             Vector3 moveDirection = npc.GetComponent<AIController>().target.transform.position - npc.transform.position;
             moveDirection.z = 0;
-            npc.transform.Translate(moveDirection.normalized * npc.GetComponent<CharacterStatus>().moveSpeed * Time.deltaTime);
+            npc.transform.Translate(moveDirection.normalized * npc.GetComponent<EnemyStatus>().moveSpeed * Time.deltaTime);
         }
     }
 
@@ -27,13 +27,13 @@ public class MoveToTargetState : FSMState
         }
 
         if (!npc.GetComponent<AIController>().target.activeSelf || Vector3.Distance(npc.GetComponent<AIController>().
-            target.transform.position, npc.transform.position) >= npc.GetComponent<CharacterStatus>().spottingDistance)
+            target.transform.position, npc.transform.position) >= npc.GetComponent<EnemyStatus>().spottingDistance)
         {
             fSMSystem.PerformTransition(Transition.NoTarget);
         }
 
         if (Vector3.Distance(npc.GetComponent<AIController>().target.transform.position, npc.transform.position)
-            <= npc.GetComponent<CharacterStatus>().attackRange)
+            <= npc.GetComponent<EnemyStatus>().attackRange)
         {
             fSMSystem.PerformTransition(Transition.TargetInAttackRange);
         }
