@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 411680021
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 2585874796098763323, guid: f4dfe1113a8126b4289db4cc4c20bc8d,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -192,6 +192,8 @@ MonoBehaviour:
     type: 3}
   playerProjectileRight: {fileID: 3382152755949371371, guid: dcea6e09f3de3514ab497634925ba1ff,
     type: 3}
+  releasedBoom: {fileID: 1273973429706639667, guid: ab4b5caf0239cb84299a57f1190e6ac7,
+    type: 3}
   firePoint: {fileID: 1623044074629944928}
 --- !u!114 &283303452763474017
 MonoBehaviour:
@@ -208,6 +210,8 @@ MonoBehaviour:
   maxHealth: 6
   currentHealth: 0
   damage: 1
+  keyNumber: 0
+  boomNumber: 0
 --- !u!1 &1623044074629944929
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +236,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623044074629944929}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.85, z: 0}
+  m_LocalPosition: {x: 0, y: 0.684, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1623044074516170208}
@@ -264,7 +268,7 @@ Transform:
   m_GameObject: {fileID: 1623044075787586650}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.03, y: 0.55, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_Children: []
   m_Father: {fileID: 1623044074516170208}
   m_RootOrder: 0
@@ -310,7 +314,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4657225596541898658, guid: 9a15d1b0bedfb57448c5631e49c48dbe,
+  m_Sprite: {fileID: 6355209084749932294, guid: 24aa064d9c7c1d542b79c104f0127f9c,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

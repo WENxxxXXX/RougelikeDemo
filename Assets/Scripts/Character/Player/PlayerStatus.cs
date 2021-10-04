@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class PlayerStatus : CharacterStatus
 {
     public event UnityAction onPlayerDie;
+    public int keyNumber = 0;
+    public int boomNumber = 0;
     Animator animator;
 
     private void Awake()
@@ -20,5 +22,13 @@ public class PlayerStatus : CharacterStatus
         onPlayerDie.Invoke();
         //TODO:广播
         Time.timeScale = 0;
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Door") && keyNumber > 0)
+        {
+            keyNumber--;
+            other.collider.enabled = false;
+        }
     }
 }

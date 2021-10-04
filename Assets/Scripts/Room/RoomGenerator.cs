@@ -55,22 +55,30 @@ public class RoomGenerator : MonoBehaviour
             SetupRoom(room);
         }
 
-        for (int i = 1; i < rooms.Count - 1; i++)
+        rooms[0].roomType = RoomType.DefaultRoom;
+        FindEndRoom();
+        endRoom.GetComponent<Room>().roomType = RoomType.BossRoom;
+        if (oneDoorRooms.Count != 0)
         {
+            oneDoorRooms[Random.Range(0, oneDoorRooms.Count)].
+                GetComponent<Room>().roomType = RoomType.TreasureRoom;
+        }
+
+        for (int i = 1; i < rooms.Count; i++)
+        {
+            if (rooms[i].roomType != 0) break;
+
             Instantiate(roomLayouts[Random.Range(0, roomLayouts.Length)],
                 rooms[i].transform.position, Quaternion.identity);
 
             //TODO:待优化
             float temp = Random.Range(0f, 1f);
-            if (temp >= 0f && temp <= 0.7f) rooms[i].roomType = RoomType.FightRoom;
-            else if (temp > 0.7f && temp <= 0.85f) rooms[i].roomType = RoomType.TreasureRoom;
-            else if (temp > 0.85f && temp < 1f) rooms[i].roomType = RoomType.KeyRoom;
+            if (temp >= 0f && temp <= 0.6f) rooms[i].roomType = RoomType.FightRoom;
+            else if (temp > 0.6f && temp <= 0.7f) rooms[i].roomType = RoomType.KeyRoom;
+            else if (temp > 0.7f && temp < 0.8f) rooms[i].roomType = RoomType.BloodRoom;
+            else if (temp > 0.8f && temp < 0.9f) rooms[i].roomType = RoomType.BoomRoom;
+            else if (temp > 0.9f && temp < 1f) rooms[i].roomType = RoomType.TrapRoom;
         }
-
-        //为首尾房间着色
-        rooms[0].roomType = RoomType.DefaultRoom;
-        FindEndRoom();
-        endRoom.GetComponent<Room>().roomType = RoomType.BossRoom;
     }
 
     private void Update()
@@ -176,6 +184,7 @@ public class RoomGenerator : MonoBehaviour
         if (oneDoorRooms.Count != 0)
         {
             endRoom = oneDoorRooms[Random.Range(0, oneDoorRooms.Count)];
+            oneDoorRooms.Remove(endRoom);
         }
         else
         {

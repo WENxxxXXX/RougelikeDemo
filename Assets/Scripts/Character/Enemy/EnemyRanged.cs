@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyRanged : AIController
 {
-    public override void Start()
+    protected override void OnEnable()
     {
         aiConfigFile = "EnemyRangedAI.txt";
-        base.Start();
+        base.OnEnable();
     }
 }

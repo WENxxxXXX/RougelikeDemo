@@ -44,13 +44,17 @@
      <Compile Include="Assets\Scripts\System Module\SceneLoader.cs" />
      <Compile Include="Assets\Scripts\FSM System\FSMSystem.cs" />
      <Compile Include="Assets\Scripts\Character\AIController.cs" />
+     <Compile Include="Assets\Scripts\UI\HealthUI.cs" />
      <Compile Include="Assets\Scripts\System Module\Singleton.cs" />
      <Compile Include="Assets\Scripts\Character\Player\PlayerFire.cs" />
      <Compile Include="Assets\Scripts\UI\MiniMap.cs" />
      <Compile Include="Assets\Scripts\FSM System\FSMState\MoveToTargetState.cs" />
+     <Compile Include="Assets\Scripts\Item\LoveBlood.cs" />
      <Compile Include="Assets\Scripts\Projectile\Projectile.cs" />
      <Compile Include="Assets\Scripts\Pool System\Pool.cs" />
+     <Compile Include="Assets\Scripts\Character\Enemy\EnemyMelee.cs" />
      <Compile Include="Assets\Scripts\Projectile\Projectile_Aiming.cs" />
+     <Compile Include="Assets\Scripts\Character\Enemy\EnemyMelee2.cs" />
      <Compile Include="Assets\Scripts\Room\RoomGenerator.cs" />
      <Compile Include="Assets\Scripts\Character\Enemy\EnemyStatus.cs" />
      <Compile Include="Assets\Scripts\Room\Room.cs" />
@@ -66,7 +70,13 @@
      <Compile Include="Assets\Scripts\UI\MainMenu.cs" />
      <Compile Include="Assets\Scripts\FSM System\AIConfigurationReader.cs" />
      <Compile Include="Assets\Scripts\FSM System\FSMState\FSMState.cs" />
+     <Compile Include="Assets\Scripts\Item\Treasure.cs" />
+     <Compile Include="Assets\Scripts\Item\Key.cs" />
+     <Compile Include="Assets\Scripts\Item\Boom.cs" />
+     <Compile Include="Assets\Scripts\Item\Trap.cs" />
+     <Compile Include="Assets\Scripts\Item\ReleasedBoom.cs" />
      <None Include="Assets\StreamingAssets\EnemyRangedAI.txt" />
+     <None Include="Assets\StreamingAssets\EnemyMeleeAI.txt" />
     <Reference Include="UnityEngine">
         <HintPath>D:\Unity Editor\2021.1.21f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

@@ -1,0 +1,9 @@
+[SeekTarget]
+NoHealth > Dead
+FindTarget > MoveToTarget
+
+[MoveToTarget]
+NoHealth > Dead
+NoTarget > SeekTarget
+
+[Dead]

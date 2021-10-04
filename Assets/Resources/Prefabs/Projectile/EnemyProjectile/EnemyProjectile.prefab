@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyGameObject: 0
-  lifetime: 0.7
+  lifetime: 1
 --- !u!114 &5463571932631223083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,5 +153,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ownerVelocity: {x: 0, y: 0}
   velocityFactor: 3
-  moveSpeed: 10
+  moveSpeed: 7
   moveDirection: {x: 1, y: 0}

@@ -13,7 +13,7 @@ public class AIController : MonoBehaviour
     [SerializeField] float maxAttackCD;
     [SerializeField] float minMoveCD;
     [SerializeField] float maxMoveCD;
-    [HideInInspector] List<Vector2> moveDirectionList;
+    [HideInInspector] public List<Vector2> moveDirectionList;
     EnemyStatus enemyStatus;
     Rigidbody2D rigid;
 
@@ -23,21 +23,24 @@ public class AIController : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         moveDirectionList = new List<Vector2>();
+        Initialize();
+        StartCoroutine(nameof(RandomMoveCoroutine));
+
+        fsm = new FSMSystem(aiConfigFile, gameObject);
+        target = null;
+
+    }
+
+    public void Initialize()
+    {
+        moveDirectionList.Clear();
         moveDirectionList.Add(new Vector2(1, 0));
         moveDirectionList.Add(new Vector2(-1, 0));
         moveDirectionList.Add(new Vector2(0, 1));
         moveDirectionList.Add(new Vector2(0, -1));
-        StartCoroutine(nameof(RandomMoveCoroutine));
-
-    }
-
-    public virtual void Start()
-    {
-        fsm = new FSMSystem(aiConfigFile, gameObject);
-        target = null;
     }
 
     public virtual void Update()
@@ -57,6 +60,7 @@ public class AIController : MonoBehaviour
 
     IEnumerator FireCoroutine()
     {
+        yield return new WaitForSeconds(Random.Range(1f, 2f));
         while (true)
         {
             var temp = PoolManager.Release(projectile,

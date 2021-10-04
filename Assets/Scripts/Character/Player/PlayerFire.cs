@@ -10,21 +10,26 @@ public class PlayerFire : MonoBehaviour
     bool leftFire;
     bool rightFire;
     float remainFireInterval;
-    CharacterStatus characterStatus;
+    PlayerStatus playerStatus;
     [SerializeField] float fireInterval;
     [SerializeField] GameObject playerProjectileUp;
     [SerializeField] GameObject playerProjectileDown;
     [SerializeField] GameObject playerProjectileLeft;
     [SerializeField] GameObject playerProjectileRight;
+    [SerializeField] GameObject releasedBoom;
     [SerializeField] Transform firePoint;
 
     private void Awake()
     {
-        characterStatus = GetComponent<CharacterStatus>();
+        playerStatus = GetComponent<PlayerStatus>();
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E) && playerStatus.boomNumber > 0)
+        {
+            Instantiate(releasedBoom, transform.position, Quaternion.identity);
+        }
         ConfirmFireDirection();
         Fire();
         if (remainFireInterval > 0f)
@@ -137,25 +142,25 @@ public class PlayerFire : MonoBehaviour
             if (upFire)
             {
                 PoolManager.Release(playerProjectileUp, firePoint.position,
-                    Quaternion.identity).GetComponent<Projectile>().SetOwner(characterStatus);
+                    Quaternion.identity).GetComponent<Projectile>().SetOwner(playerStatus);
                 remainFireInterval = fireInterval;
             }
             else if (downFire)
             {
                 PoolManager.Release(playerProjectileDown, firePoint.position,
-                    Quaternion.identity).GetComponent<Projectile>().SetOwner(characterStatus);
+                    Quaternion.identity).GetComponent<Projectile>().SetOwner(playerStatus);
                 remainFireInterval = fireInterval;
             }
             else if (leftFire)
             {
                 PoolManager.Release(playerProjectileLeft, firePoint.position,
-                    Quaternion.identity).GetComponent<Projectile>().SetOwner(characterStatus);
+                    Quaternion.identity).GetComponent<Projectile>().SetOwner(playerStatus);
                 remainFireInterval = fireInterval;
             }
             else if (rightFire)
             {
                 PoolManager.Release(playerProjectileRight, firePoint.position,
-                    Quaternion.identity).GetComponent<Projectile>().SetOwner(characterStatus);
+                    Quaternion.identity).GetComponent<Projectile>().SetOwner(playerStatus);
                 remainFireInterval = fireInterval;
             }
         }

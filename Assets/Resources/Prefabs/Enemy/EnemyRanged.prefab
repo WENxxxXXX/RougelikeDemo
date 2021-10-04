@@ -162,10 +162,11 @@ MonoBehaviour:
   projectile: {fileID: 2978888702889080190, guid: 5afd10558b8004b4b8f894923b206f95,
     type: 3}
   target: {fileID: 0}
-  minAttackCD: 1
-  maxAttackCD: 2
-  minMoveCD: 0.4
-  maxMoveCD: 0.8
+  minAttackCD: 1.5
+  maxAttackCD: 3
+  minMoveCD: 1
+  maxMoveCD: 2
+  moveDirectionList: []
 --- !u!114 &-7559264949481686318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +183,7 @@ MonoBehaviour:
   currentHealth: 0
   damage: 1
   moveSpeed: 4
+  maxMoveSpeed: 0
   spottingDistance: 5
   attackRange: 5
   attackTargetTag: Player
@@ -210,7 +212,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5187854754156238662}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.78, z: 0}
+  m_LocalPosition: {x: 0, y: 0.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5187854754087846522}

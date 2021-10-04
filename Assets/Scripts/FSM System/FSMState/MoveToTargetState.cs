@@ -11,12 +11,12 @@ public class MoveToTargetState : FSMState
 
     public override void Act(GameObject npc)
     {
-        if (npc.GetComponent<AIController>().target.activeSelf)
-        {
-            Vector3 moveDirection = npc.GetComponent<AIController>().target.transform.position - npc.transform.position;
-            moveDirection.z = 0;
-            npc.transform.Translate(moveDirection.normalized * npc.GetComponent<EnemyStatus>().moveSpeed * Time.deltaTime);
-        }
+        Vector3 moveDirection = npc.GetComponent<AIController>().target.transform.position - npc.transform.position;
+        moveDirection.Normalize();
+        moveDirection.z = 0;
+        npc.GetComponent<AIController>().moveDirectionList.Clear();
+        npc.GetComponent<AIController>().moveDirectionList.Add(moveDirection);
+        npc.GetComponent<EnemyStatus>().moveSpeed = npc.GetComponent<EnemyStatus>().maxMoveSpeed;
     }
 
     public override void Reason(GameObject npc)
@@ -30,12 +30,6 @@ public class MoveToTargetState : FSMState
             target.transform.position, npc.transform.position) >= npc.GetComponent<EnemyStatus>().spottingDistance)
         {
             fSMSystem.PerformTransition(Transition.NoTarget);
-        }
-
-        if (Vector3.Distance(npc.GetComponent<AIController>().target.transform.position, npc.transform.position)
-            <= npc.GetComponent<EnemyStatus>().attackRange)
-        {
-            fSMSystem.PerformTransition(Transition.TargetInAttackRange);
         }
     }
 }

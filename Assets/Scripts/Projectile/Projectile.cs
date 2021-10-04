@@ -38,6 +38,11 @@ public class Projectile : MonoBehaviour
             // AudioManager.Instance.PlayRandomSFX(hitSFX);
             gameObject.SetActive(false);
         }
+
+        if (collision.gameObject.layer == 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public virtual void SetTarget(GameObject target)

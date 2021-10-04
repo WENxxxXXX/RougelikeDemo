@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
     [SerializeField] GameObject[] enemy, boss;
     List<GameObject> enemyList;
-    WaitUntil waitUntilNoEnemy;
+    public event UnityAction<bool> onNoEnemy = delegate { };
     Vector3[] enemyPosition;
     Vector3 generatePos;
 
@@ -14,8 +15,6 @@ public class EnemyManager : Singleton<EnemyManager>
     {
         base.Awake();
         enemyList = new List<GameObject>();
-        //waitUntilNoEnemy = new WaitUntil(NoEnemy);
-        waitUntilNoEnemy = new WaitUntil(() => enemyList.Count == 0);
 
         enemyPosition = new Vector3[]
         {
@@ -30,6 +29,14 @@ public class EnemyManager : Singleton<EnemyManager>
             new Vector3(-3f, -3f, 0f),
             new Vector3(3f, -3f, 0f)
         };
+    }
+
+    private void Update()
+    {
+        if (enemyList.Count == 0)
+        {
+            onNoEnemy.Invoke(false);
+        }
     }
 
     public void GenerateRandomEnemy(int mount, Vector3 centra)
