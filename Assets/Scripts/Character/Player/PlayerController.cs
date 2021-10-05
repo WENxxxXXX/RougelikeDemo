@@ -8,6 +8,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float speed;
+    [SerializeField] BossHealthBarUI bossHealthBarUI;
 
     Rigidbody2D rigid;
     Animator animator;
@@ -48,5 +49,15 @@ public class PlayerController : MonoBehaviour
     void SwitchAnimation()
     {
         animator.SetFloat("speed", movement.magnitude);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.TryGetComponent<Room>(out Room room) && room.roomType == RoomType.BossRoom)
+        {
+            bossHealthBarUI.GetComponent<Canvas>().enabled = true;
+            bossHealthBarUI.bossList = room.bossList;
+            bossHealthBarUI.holePosition = room.transform.position;
+        }
     }
 }

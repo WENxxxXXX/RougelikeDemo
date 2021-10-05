@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class EnemyManager : Singleton<EnemyManager>
 {
-    [SerializeField] GameObject[] enemy, boss;
+    [SerializeField] GameObject[] enemy;
     List<GameObject> enemyList;
     public event UnityAction<bool> onNoEnemy = delegate { };
     Vector3[] enemyPosition;

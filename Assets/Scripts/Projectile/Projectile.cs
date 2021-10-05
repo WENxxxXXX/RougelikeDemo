@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)//子弹命中时：角色受伤；击中特效；禁用子弹对象
     {
-        if(collision.gameObject.TryGetComponent<CharacterStatus>(out CharacterStatus defender))
+        if (collision.gameObject.TryGetComponent<CharacterStatus>(out CharacterStatus defender))
         {
             defender.TakeDamage(owner, defender);
             // PoolManager.Release(hitVFX, collision.GetContact(0).point, Quaternion.LookRotation(collision.GetContact(0).normal));
@@ -42,6 +42,11 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.layer == 0)
         {
             gameObject.SetActive(false);
+        }
+        if (collision.gameObject.GetComponentInParent<CharacterStatus>() != null)
+        {
+            owner.TakeDamage(owner, collision.gameObject.GetComponentInParent
+                <CharacterStatus>());
         }
     }
 

@@ -224,6 +224,9 @@ MonoBehaviour:
   key: {fileID: 8246230928242050541, guid: 180132fec8ca787478e4cd96a74b401b, type: 3}
   boom: {fileID: 1806718756927919865, guid: 31c3532afdfd6f94895546fd2f7677a3, type: 3}
   trap: {fileID: 1621847250579587965, guid: 50b5b8baced0bbf4ca3d5aef90487a0c, type: 3}
+  hole: {fileID: 4546742616412323802, guid: 20f1ed13c7c39d249bcdad1c10d5ff35, type: 3}
+  boss: {fileID: 5500755490529096859, guid: 47798159999b49845b9302d20aa80c18, type: 3}
+  bossList: []
   roomLeft: 0
   roomRight: 0
   roomUp: 0

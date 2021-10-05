@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Door
   - RoomLayout
+  - PlayerProjectile
   layers:
   - Default
   - TransparentFX
